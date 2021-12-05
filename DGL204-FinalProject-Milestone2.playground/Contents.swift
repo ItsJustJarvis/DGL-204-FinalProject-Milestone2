@@ -33,6 +33,12 @@ struct Die: Comparable {
     static func < (lhs: Die, rhs: Die) -> Bool {
         return lhs.value < rhs.value
     }
+    
+    mutating func roll() {
+        if(kept != true){
+            self.value = Int.random(in:1...6)
+        }
+    }
 }
 
 struct Hand {
