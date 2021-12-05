@@ -26,3 +26,18 @@ struct Die{
         self.kept = false
     }
 }
+
+struct Hand {
+    var dice: [Die] = [];
+    
+    init() {
+        createHand()
+    }
+    
+    mutating func createHand(){
+        while self.dice.count < NUM_OF_DIE {
+            let newDie = Die();
+            self.dice.append(newDie);
+        }
+    }
+}
