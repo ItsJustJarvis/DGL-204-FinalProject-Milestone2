@@ -19,6 +19,13 @@ class Player {
         self.hand = Hand()
         self.scorecard = Scorecard()
     }
+    
+    func rollDice() {
+        for index in hand.dice.indices {
+            hand.dice[index].roll()
+            hand.dice.sort()
+        }
+    }
 }
 
 struct Die: Comparable {
