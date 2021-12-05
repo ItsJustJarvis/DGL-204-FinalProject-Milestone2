@@ -21,13 +21,17 @@ class Player {
     }
 }
 
-struct Die{
+struct Die: Comparable {
     var value: Int
     var kept: Bool
     
     init(){
         self.value = 1
         self.kept = false
+    }
+    
+    static func < (lhs: Die, rhs: Die) -> Bool {
+        return lhs.value < rhs.value
     }
 }
 
