@@ -54,6 +54,12 @@ struct Hand {
             self.dice.append(newDie);
         }
     }
+    
+    func showValues() {
+        for die in dice {
+            print(die);
+        }
+    }
 }
 
 enum ScorecardItems: CaseIterable {
