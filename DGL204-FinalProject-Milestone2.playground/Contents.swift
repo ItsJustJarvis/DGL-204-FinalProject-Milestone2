@@ -46,3 +46,13 @@ enum ScorecardItems: CaseIterable {
     case ones, twos, threes, fours, fives, sixes, threeOfKind, fourOfKind, fullHouse, smStraight, lgStraight, yahtzee, chance
 }
 
+struct Scorecard {
+    var values: [ScorecardItems: Int] = [:]
+    
+    init() {
+        values.reserveCapacity(13);
+        for item in ScorecardItems.allCases {
+            values[item] = 0
+        }
+    }
+}
