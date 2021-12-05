@@ -9,11 +9,15 @@ class Player {
     let name: String
     var score: Int
     var numRolls: Int
+    var hand: Hand
+    var scorecard: Scorecard
     
     init(name:  String){
         self.name = name
         self.score = 0
         self.numRolls = 0
+        self.hand = Hand()
+        self.scorecard = Scorecard()
     }
 }
 
