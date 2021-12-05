@@ -27,6 +27,10 @@ class Player {
             }
         }
     }
+    
+    func keepAll(){
+        for choice in DieChoices.allCases {
+            keep(die: choice)
         }
     }
 }
