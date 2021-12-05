@@ -83,7 +83,8 @@ struct Hand {
         }
     }
     
-    func showValues() {
+    mutating func showValues() {
+        dice.sort()
         for die in dice {
             print(die);
         }
