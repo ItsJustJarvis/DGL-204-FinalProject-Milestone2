@@ -20,6 +20,16 @@ class Player {
     }
     
     func rollDice() {
+        if(numRolls < MAX_ROLLS){
+            for index in hand.dice.indices {
+                hand.dice[index].roll()
+            }
+            numRolls += 1
+        } else {
+            keepAll()
+        }
+    }
+    
     func keep(die: DieChoices){
         for index in hand.dice.indices {
             if die.rawValue == index {
