@@ -3,7 +3,6 @@ import Foundation
 
 // Game constants
 let MAX_ROLLS = 3;
-let NUM_OF_DIE = 5;
 
 class Player {
     let name: String
@@ -26,6 +25,10 @@ class Player {
             hand.dice.sort()
         }
     }
+}
+
+enum DieChoices: Int, CaseIterable {
+    case one = 0, two, three, four, five
 }
 
 struct Die: Comparable {
@@ -56,7 +59,7 @@ struct Hand {
     }
     
     mutating func createHand(){
-        while self.dice.count < NUM_OF_DIE {
+        while self.dice.count < DieChoices.allCases.count {
             let newDie = Die();
             self.dice.append(newDie);
         }
