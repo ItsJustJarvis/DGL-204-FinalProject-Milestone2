@@ -17,3 +17,12 @@ class Player {
     }
 }
 
+struct Die{
+    var value: Int
+    var kept: Bool
+    
+    init(){
+        self.value = 1
+        self.kept = false
+    }
+}
