@@ -20,9 +20,13 @@ class Player {
     }
     
     func rollDice() {
+    func keep(die: DieChoices){
         for index in hand.dice.indices {
-            hand.dice[index].roll()
-            hand.dice.sort()
+            if die.rawValue == index {
+                hand.dice[index].kept = true
+            }
+        }
+    }
         }
     }
 }
