@@ -56,3 +56,18 @@ struct Scorecard {
         }
     }
 }
+
+class Game {
+    var players: [Player];
+    var scoreboard: [String: Int] = [:]
+    var numberOfPlayers: Int {
+        get{
+            players.count
+        }
+    }
+    
+    init(players: [Player]){
+        self.players = players
+    }
+}
+
