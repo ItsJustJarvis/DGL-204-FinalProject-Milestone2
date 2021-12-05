@@ -41,3 +41,8 @@ struct Hand {
         }
     }
 }
+
+enum ScorecardItems: CaseIterable {
+    case ones, twos, threes, fours, fives, sixes, threeOfKind, fourOfKind, fullHouse, smStraight, lgStraight, yahtzee, chance
+}
+
