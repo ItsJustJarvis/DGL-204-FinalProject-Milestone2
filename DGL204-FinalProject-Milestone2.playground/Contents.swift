@@ -101,6 +101,7 @@ struct Hand {
         print("\n")
         
         for index in dice.indices {
+            print("\(index + 1): \(dice[index])");
         }
     }
 }
