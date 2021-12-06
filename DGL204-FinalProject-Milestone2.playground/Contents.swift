@@ -28,7 +28,13 @@ class Player {
             print("No more rolls. Track your score.")
         }
     }
+    
+    func rollDice() {
+        for index in hand.dice.indices {
+            hand.dice[index].roll()
         }
+        numRolls += 1
+        hand.showValues()
     }
     
     func keep(die: DieChoices){
