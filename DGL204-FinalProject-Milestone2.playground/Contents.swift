@@ -19,14 +19,15 @@ class Player {
         self.scorecard = Scorecard()
     }
     
-    func rollDice() {
-        if(numRolls < MAX_ROLLS){
-            for index in hand.dice.indices {
-                hand.dice[index].roll()
-            }
-            numRolls += 1
+    func takeTurn(){
+        if (numRolls < MAX_ROLLS){
+            rollDice()
+            print("Pick what dice to keep, and roll again.")
         } else {
             keepAll()
+            print("No more rolls. Track your score.")
+        }
+    }
         }
     }
     
@@ -85,8 +86,9 @@ struct Hand {
     
     mutating func showValues() {
         dice.sort()
-        for die in dice {
-            print(die);
+        print("\n")
+        
+        for index in dice.indices {
         }
     }
 }
