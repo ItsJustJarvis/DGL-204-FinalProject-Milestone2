@@ -239,6 +239,11 @@ struct Scorecard {
             trackedItems += 1
             
         case .chance:
+            hand.dice.forEach { die in
+                sum += die.value
+            }
+            values[.chance] = sum
+            trackedItems += 1
         }
     }
     }
