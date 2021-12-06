@@ -154,6 +154,20 @@ struct Scorecard {
             trackedItems += 1
             
         case .threeOfKind:
+            var counts: [Int: Int] = [:]
+            for die in hand.dice {
+                counts[die.value, default: 0] += 1
+            }
+            for key in counts.keys {
+                if(counts[key] == 3){
+                    hand.dice.forEach { die in
+                        sum += die.value
+                    }
+                }
+            }
+            values[.threeOfKind] = sum
+            trackedItems += 1
+            
         case .fourOfKind:
         case .fullHouse:
         case .smStraight:
