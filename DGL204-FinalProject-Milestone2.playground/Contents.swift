@@ -169,6 +169,20 @@ struct Scorecard {
             trackedItems += 1
             
         case .fourOfKind:
+            var counts: [Int: Int] = [:]
+            for die in hand.dice {
+                counts[die.value, default: 0] += 1
+            }
+            for key in counts.keys {
+                if(counts[key] == 4){
+                    hand.dice.forEach { die in
+                        sum += die.value
+                    }
+                }
+            }
+            values[.fourOfKind] = sum
+            trackedItems += 1
+            
         case .fullHouse:
         case .smStraight:
         case .lgStraight:
