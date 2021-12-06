@@ -50,6 +50,12 @@ class Player {
             keep(die: choice)
         }
     }
+    
+    func resetHand() {
+        self.hand = Hand()
+        numRolls = 0
+    }
+    
 }
 
 enum DieChoices: Int, CaseIterable {
