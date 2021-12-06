@@ -213,6 +213,19 @@ struct Scorecard {
             trackedItems += 1
             
         case .lgStraight:
+            let possibleStraights = [[1,2,3,4,5],[2,3,4,5,6]]
+            var diceValues: [Int] = []
+            hand.dice.forEach { die in
+                diceValues.append(die.value)
+            }
+            for straight in possibleStraights {
+                if(straight == diceValues){
+                    sum = 40
+                }
+            }
+            values[.lgStraight] = sum
+            trackedItems += 1
+            
         case .yahtzee:
         case .chance:
         }
