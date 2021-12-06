@@ -246,6 +246,13 @@ struct Scorecard {
             trackedItems += 1
         }
     }
+    
+    func totalScores() -> Int {
+        var sum = 0
+        for (_, value) in values {
+            sum += value
+        }
+        return sum
     }
 }
 
