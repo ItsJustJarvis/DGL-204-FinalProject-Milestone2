@@ -184,6 +184,18 @@ struct Scorecard {
             trackedItems += 1
             
         case .fullHouse:
+            var counts: [Int: Int] = [:]
+            for die in hand.dice {
+                counts[die.value, default: 0] += 1
+            }
+            if(counts.keys.count == 2){
+                if(counts[0] == 2 && counts[1] == 3 || counts[0] == 3 && counts[1] == 2){
+                    sum = 25
+                }
+            }
+            values[.fullHouse] = sum
+            trackedItems += 1
+            
         case .smStraight:
         case .lgStraight:
         case .yahtzee:
