@@ -103,6 +103,24 @@ struct Scorecard {
         for item in ScorecardItems.allCases {
             values[item] = 0
         }
+    mutating func trackScores(for item: ScorecardItems, from hand: Hand) {
+        var sum = 0
+        switch item {
+        case .ones:
+        case .twos:
+        case .threes:
+        case .fours:
+        case .fives:
+        case .sixes:
+        case .threeOfKind:
+        case .fourOfKind:
+        case .fullHouse:
+        case .smStraight:
+        case .lgStraight:
+        case .yahtzee:
+        case .chance:
+        }
+    }
     }
 }
 
