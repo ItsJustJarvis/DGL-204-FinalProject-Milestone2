@@ -227,6 +227,17 @@ struct Scorecard {
             trackedItems += 1
             
         case .yahtzee:
+            var diceValues: [Int] = []
+            hand.dice.forEach { die in
+                diceValues.append(die.value)
+            }
+            let set = Set(diceValues)
+            if set.count == 1 {
+                sum = 50
+            }
+            values[.yahtzee] = sum
+            trackedItems += 1
+            
         case .chance:
         }
     }
