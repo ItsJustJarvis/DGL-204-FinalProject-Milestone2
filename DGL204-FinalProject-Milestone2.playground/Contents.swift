@@ -97,12 +97,18 @@ enum ScorecardItems: CaseIterable {
 
 struct Scorecard {
     var values: [ScorecardItems: Int] = [:]
+    var trackedItems: Int
+    var filled: Bool
     
     init() {
         values.reserveCapacity(13);
         for item in ScorecardItems.allCases {
             values[item] = 0
         }
+        trackedItems = 0
+        filled = false
+    }
+    
     mutating func trackScores(for item: ScorecardItems, from hand: Hand) {
         var sum = 0
         switch item {
