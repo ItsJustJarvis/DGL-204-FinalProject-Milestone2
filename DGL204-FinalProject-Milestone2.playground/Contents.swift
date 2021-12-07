@@ -373,3 +373,20 @@ class Game {
     }
 }
 
+// TEST CODE FUNCTIONALITY:
+
+let player1 = Player(name: "Reeve"); // Add Name
+let yahtzee = Game(players: [player1])
+
+yahtzee.playerTurn(for: player1)
+
+player1.keep(choices: [.two,.three,.four,.five]) // Multiple Choices Allowed. Choices Are: .one, .two, .three, .four, .five. Leave empty if you don't want to keep any.
+
+yahtzee.playerTurn(for: player1)
+
+player1.keep(choices: []) // Multiple Choices Allowed. Choices Are: .one, .two, .three, .four, .five. Leave empty if you don't want to keep any.
+
+yahtzee.playerTurn(for: player1)
+
+player1.trackScores(for: .fullHouse) // Scorecard Items: .ones, .twos, .threes, .fours, .fives, .sixes, .threeOfKind, .fourOfKind, .fullHouse, .smStraight, .lgStraight, .yahtzee, .chance
+
