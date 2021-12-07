@@ -358,6 +358,18 @@ class Game {
             self.scoreboard[player.name] = player.score
         }
     }
+    
+    func playerTurn(for player: Player){
+        player.roll()
+        if(player.numRolls < MAX_ROLLS_PER_TURN){
+            player.hand.showValues()
+            print("Roll: \(player.numRolls)/\(MAX_ROLLS_PER_TURN). Pick what dice to keep, and roll again. Choices Are: .one, .two, .three, .four, .five.\n")
+        } else {
+            player.keepAll()
+            player.hand.showValues()
+            print("No rolls left. Use your scorecard to track your points!\n")
+            player.scorecard.showCard()
+        }
     }
 }
 
