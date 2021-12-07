@@ -344,12 +344,20 @@ class Game {
     let MAX_ROLLS_PER_TURN = 3;
     var numberOfPlayers: Int {
         get{
-            players.count
+            return players.count
         }
     }
     
     init(players: [Player]){
         self.players = players
+        setScoreboard()
+    }
+    
+    func setScoreboard(){
+        for player in players {
+            self.scoreboard[player.name] = player.score
+        }
+    }
     }
 }
 
