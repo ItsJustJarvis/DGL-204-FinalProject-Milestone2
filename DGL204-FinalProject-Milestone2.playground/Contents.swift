@@ -378,11 +378,37 @@ class Hand {
         }
     }
 }
+
+enum ScorecardItems: Int, CaseIterable {
+    case ones = 0, twos, threes, fours, fives, sixes, threeOfKind, fourOfKind, fullHouse, smStraight, lgStraight, yahtzee, chance
+}
+
+struct Scorecard {
+    var values: [(field: ScorecardItems, value: Int, tracked: Bool)] = []
+    var trackedItems: Int
+    var filled: Bool
+    
+    init() {
+        for item in ScorecardItems.allCases {
+            values.append((item, 0, false))
+        }
+        trackedItems = 0
+        filled = false
+    }
+    
+    func showCard(){
+        print("SCORECARD TOTALS")
+        print("================")
+        for item in values {
+            print("\(item.field): \(item.value)");
+        }
+        print("")
+    }
     
     func totalScores() -> Int {
         var sum = 0
-        for (_, value) in values {
-            sum += value
+        for item in values {
+            sum += item.value
         }
         return sum
     }
