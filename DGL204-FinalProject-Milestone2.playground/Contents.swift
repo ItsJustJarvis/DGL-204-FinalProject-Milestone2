@@ -162,8 +162,10 @@ class Player {
                 counts[die.value, default: 0] += 1
             }
             if(counts.keys.count == 2){
-                if(counts[0] == 2 && counts[1] == 3 || counts[0] == 3 && counts[1] == 2){
-                    sum = 25
+                for key in counts.keys{
+                    if (counts[key] == 2 || counts[key] == 3){
+                        sum = 25
+                    }
                 }
             }
             scorecard.values[8].value = sum
