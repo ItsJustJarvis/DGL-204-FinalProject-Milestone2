@@ -184,10 +184,8 @@ class Player {
                     diceValues.append(die.value)
                 }
             }
-            let firstFour = Array(diceValues[0...3])
-            let lastFour = Array(diceValues[2...4])
             for straight in possibleStraights {
-                if(straight == firstFour || straight == lastFour){
+                if(straight == diceValues){
                     sum = 30
                 }
             }
