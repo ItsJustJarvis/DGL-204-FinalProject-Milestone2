@@ -340,8 +340,8 @@ struct Scorecard {
 
 class Game {
     var players: [Player];
+    var currentPlayer: Int
     var scoreboard: [String: Int] = [:]
-    let MAX_ROLLS_PER_TURN = 3;
     var numberOfPlayers: Int {
         get{
             return players.count
@@ -359,7 +359,10 @@ class Game {
         }
     }
     
-    func playerTurn(for player: Player){
+    func play(){
+        let MAX_ROLLS_PER_TURN = 3;
+        let player = players[currentPlayer]
+        print("\(player.name)'s roll.\n")
         player.roll()
         if(player.numRolls < MAX_ROLLS_PER_TURN){
             player.hand.showValues()
@@ -369,6 +372,14 @@ class Game {
             player.hand.showValues()
             print("No rolls left. Use your scorecard to track your points!\n")
             player.scorecard.showCard()
+            changeTurns()
+        }
+    }
+    
+    func changeTurns(){
+        currentPlayer += 1
+        if(currentPlayer > numberOfPlayers - 1){
+            currentPlayer = 0
         }
     }
 }
