@@ -1,6 +1,21 @@
 import UIKit
 import Foundation
+/**
+ 
+ Author:      Reeve Jarvis
+ Date:        12/06/2021
+ Course:      DGL-204 - Swift
+ Assignment:  Final Project
+ 
+ Project Description:
+ 
+ This project was planned as a general gameroom application meant to house three games. I have had to reduce it's overall complexity, due to time constraints and personal reasons getting in the way of my studies. I have created a codebase that includes the various pieces needed to play a game of yahtzee. This is not without errors, and is not entirely complete. It is a work in progress. With that said I was able to accomplish the basic functionality needed to play a few rounds, and track the players scores based on their hand of dice. I hope you can see some worth in what I have created, and I only wish I made more time and focus to give this project the attention it deserved.
+ 
+ **/
 
+
+// Player class object with various gameplay methods
+//
 class Player {
     let name: String
     var score: Int
@@ -37,7 +52,7 @@ class Player {
         }
     }
     
-    func trackScores(for field: ScorecardItems) {
+    func trackScores(for field: ScorecardFields) {
         var sum = 0
         switch field {
         case .ones:
@@ -244,10 +259,14 @@ class Player {
     }
 }
 
+// Enumeration to hold and govern possible die choices
+//
 enum DieChoices: Int, CaseIterable {
     case one = 0, two, three, four, five
 }
 
+// Die structure used within a players hand
+//
 struct Die: Comparable {
     var value: Int
     var kept: Bool
@@ -268,6 +287,8 @@ struct Die: Comparable {
     }
 }
 
+// Hand class to track and govern a players current hand of dice
+//
 class Hand {
     var dice: [Die] = [];
     
@@ -303,17 +324,21 @@ class Hand {
     }
 }
 
-enum ScorecardItems: Int, CaseIterable {
+// ScorecardFields enumeration to govern possible Scorecard Fields
+//
+enum ScorecardFields: Int, CaseIterable {
     case ones = 0, twos, threes, fours, fives, sixes, threeOfKind, fourOfKind, fullHouse, smStraight, lgStraight, yahtzee, chance
 }
 
+//  Scorecard structure to be used by each player in the game for tracking points from hand of dice.
+//
 struct Scorecard {
-    var values: [(field: ScorecardItems, value: Int, tracked: Bool)] = []
+    var values: [(field: ScorecardFields, value: Int, tracked: Bool)] = []
     var trackedItems: Int
     var filled: Bool
     
     init() {
-        for item in ScorecardItems.allCases {
+        for item in ScorecardFields.allCases {
             values.append((item, 0, false))
         }
         trackedItems = 0
@@ -338,6 +363,8 @@ struct Scorecard {
     }
 }
 
+// Game class to manage gameplay, and track players and their turns.
+//
 class Game {
     var players: [Player];
     var currentPlayer: Int
@@ -387,9 +414,9 @@ class Game {
 
 // TESTING CODE FUNCTIONALITY WITH A COUPLE SCRIPTED ROUNDS:
 
-// I have placed some code below in a particular scripted order to replicate a game between two players, and allow you to enter values to see the code I have made functioning. This is in place of any real user interaction. I wanted to be able to show a gameplay loop, and did not quite understand how to do so for this project. I realize this isnt perfect, and has alot of room to improve but I have put a lot of effort into producing something to hand in rather than nothing. I have had an increasingly hard week with personal concerns and have lost focus for this semester.
+// I have placed some code below in a particular scripted order to replicate a round between two players, and allow you to enter values to see the code I have made functioning (with some errors expected). This is in place of any real user interaction. I wanted to be able to show a gameplay loop, and did not quite understand how to do so for this project.
 
-// Below is a representation of a couple turns between two players. To act-out the game, enter values according to the provided comments and continue code execution as you go.
+// To act-out the game, enter values according to the provided comments and continue code execution as you go.
 
 // A players turn consists of these steps:
 //
