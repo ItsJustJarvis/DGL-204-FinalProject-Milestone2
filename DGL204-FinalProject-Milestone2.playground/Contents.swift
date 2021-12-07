@@ -113,51 +113,86 @@ struct Scorecard {
         filled = false
     }
     
-    mutating func trackScores(for item: ScorecardItems, from hand: Hand) {
+    func trackScores(for field: ScorecardItems) {
         var sum = 0
-        switch item {
+        switch field {
         case .ones:
+            if(scorecard.values[0].tracked){
+               print("Already recorded a score for that one.")
+                break
+            }
             for die in hand.dice{
                 sum += (die.value == 1) ? 1 : 0
             }
-            values[.ones] = sum
-            trackedItems += 1
+            scorecard.values[0].value = sum
+            scorecard.values[0].tracked = true
+            scorecard.showCard()
             
         case .twos:
+            if(scorecard.values[1].tracked){
+                print("Already recorded a score for that one.")
+                break
+            }
             for die in hand.dice{
                 sum += (die.value == 2) ? 2 : 0
             }
-            values[.twos] = sum
-            trackedItems += 1
+            scorecard.values[1].value = sum
+            scorecard.values[1].tracked = true
+            scorecard.showCard()
             
         case .threes:
+            if(scorecard.values[2].tracked){
+                print("Already recorded a score for that one.")
+                break
+            }
             for die in hand.dice{
                 sum += (die.value == 3) ? 3 : 0
             }
-            values[.threes] = sum
-            trackedItems += 1
+            scorecard.values[2].value = sum
+            scorecard.values[2].tracked = true
+            scorecard.showCard()
             
         case .fours:
+            if(scorecard.values[3].tracked){
+                print("Already recorded a score for that one.")
+                break
+            }
             for die in hand.dice{
                 sum += (die.value == 4) ? 4 : 0
             }
-            values[.fours] = sum
-            trackedItems += 1
+            scorecard.values[3].value = sum
+            scorecard.values[3].tracked = true
+            scorecard.showCard()
+            
         case .fives:
+            if(scorecard.values[4].tracked){
+                print("Already recorded a score for that one.")
+                break
+            }
             for die in hand.dice{
                 sum += (die.value == 5) ? 5 : 0
             }
-            values[.fives] = sum
-            trackedItems += 1
+            scorecard.values[4].value = sum
+            scorecard.values[4].tracked = true
+            scorecard.showCard()
             
         case .sixes:
+            if(scorecard.values[5].tracked){
+                print("Already recorded a score for that one.")
+                break
+            }
             for die in hand.dice{
                 sum += (die.value == 6) ? 6 : 0
             }
-            values[.sixes] = sum
-            trackedItems += 1
+            scorecard.values[5].value = sum
+            scorecard.values[5].tracked = true
+            scorecard.showCard()
             
         case .threeOfKind:
+            if(scorecard.values[6].tracked){
+                print("Already recorded a score for that one.")
+                break
+            }
             var counts: [Int: Int] = [:]
             for die in hand.dice {
                 counts[die.value, default: 0] += 1
@@ -169,10 +204,15 @@ struct Scorecard {
                     }
                 }
             }
-            values[.threeOfKind] = sum
-            trackedItems += 1
+            scorecard.values[6].value = sum
+            scorecard.values[6].tracked = true
+            scorecard.showCard()
             
         case .fourOfKind:
+            if(scorecard.values[7].tracked){
+                print("Already recorded a score for that one.")
+                break
+            }
             var counts: [Int: Int] = [:]
             for die in hand.dice {
                 counts[die.value, default: 0] += 1
@@ -184,10 +224,15 @@ struct Scorecard {
                     }
                 }
             }
-            values[.fourOfKind] = sum
-            trackedItems += 1
+            scorecard.values[7].value = sum
+            scorecard.values[7].tracked = true
+            scorecard.showCard()
             
         case .fullHouse:
+            if(scorecard.values[8].tracked){
+                print("Already recorded a score for that one.")
+                break
+            }
             var counts: [Int: Int] = [:]
             for die in hand.dice {
                 counts[die.value, default: 0] += 1
@@ -197,26 +242,38 @@ struct Scorecard {
                     sum = 25
                 }
             }
-            values[.fullHouse] = sum
-            trackedItems += 1
+            scorecard.values[8].value = sum
+            scorecard.values[8].tracked = true
+            scorecard.showCard()
             
         case .smStraight:
+            if(scorecard.values[9].tracked){
+                print("Already recorded a score for that one.")
+                break
+            }
             let possibleStraights = [[1,2,3,4],[2,3,4,5],[3,4,5,6]]
-            for straight in possibleStraights {
-                var count = 0
-                for die in hand.dice {
-                    if straight.contains(die.value) {
-                        count += 1
-                    }
+            var diceValues: [Int] = []
+            hand.dice.forEach { die in
+                if(!diceValues.contains(die.value)){
+                    diceValues.append(die.value)
                 }
-                if(count == 4){
+            }
+            let firstFour = Array(diceValues[0...3])
+            let lastFour = Array(diceValues[2...4])
+            for straight in possibleStraights {
+                if(straight == firstFour || straight == lastFour){
                     sum = 30
                 }
             }
-            values[.smStraight] = sum
-            trackedItems += 1
+            scorecard.values[9].value = sum
+            scorecard.values[9].tracked = true
+            scorecard.showCard()
             
         case .lgStraight:
+            if(scorecard.values[10].tracked){
+                print("Already recorded a score for that one.")
+                break
+            }
             let possibleStraights = [[1,2,3,4,5],[2,3,4,5,6]]
             var diceValues: [Int] = []
             hand.dice.forEach { die in
@@ -227,10 +284,15 @@ struct Scorecard {
                     sum = 40
                 }
             }
-            values[.lgStraight] = sum
-            trackedItems += 1
+            scorecard.values[10].value = sum
+            scorecard.values[10].tracked = true
+            scorecard.showCard()
             
         case .yahtzee:
+            if(scorecard.values[11].tracked){
+                print("Already recorded a score for that one.")
+                break
+            }
             var diceValues: [Int] = []
             hand.dice.forEach { die in
                 diceValues.append(die.value)
@@ -239,15 +301,21 @@ struct Scorecard {
             if set.count == 1 {
                 sum = 50
             }
-            values[.yahtzee] = sum
-            trackedItems += 1
+            scorecard.values[11].value = sum
+            scorecard.values[11].tracked = true
+            scorecard.showCard()
             
         case .chance:
+            if(scorecard.values[12].tracked){
+                print("Already recorded a score for that one.")
+                break
+            }
             hand.dice.forEach { die in
                 sum += die.value
             }
-            values[.chance] = sum
-            trackedItems += 1
+            scorecard.values[12].value = sum
+            scorecard.values[12].tracked = true
+            scorecard.showCard()
         }
     }
     
