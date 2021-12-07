@@ -344,6 +344,40 @@ struct Die: Comparable {
     }
 }
 
+class Hand {
+    var dice: [Die] = [];
+    
+    init() {
+        createHand()
+    }
+    
+    func createHand(){
+        while self.dice.count < DieChoices.allCases.count {
+            let newDie = Die();
+            self.dice.append(newDie);
+        }
+    }
+    
+    func rollDice() {
+        for index in dice.indices {
+            dice[index].roll()
+        }
+    }
+    
+    func showValues() {
+        dice.sort()
+        for index in dice.indices {
+            print("\(index + 1): \(dice[index])");
+        }
+        print("")
+    }
+    
+    func resetDice() {
+        for index in dice.indices {
+            dice[index].kept = false
+        }
+    }
+}
     
     func totalScores() -> Int {
         var sum = 0
