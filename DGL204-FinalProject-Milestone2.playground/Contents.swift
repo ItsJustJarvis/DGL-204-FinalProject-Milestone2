@@ -19,28 +19,17 @@ class Player {
         self.scorecard = Scorecard()
     }
     
-    func takeTurn(){
-        if (numRolls < MAX_ROLLS){
-            rollDice()
-            print("Pick what dice to keep, and roll again.")
-        } else {
-            keepAll()
-            print("No more rolls. Track your score.")
-        }
-    }
-    
-    func rollDice() {
-        for index in hand.dice.indices {
-            hand.dice[index].roll()
-        }
+    func roll(){
+        hand.rollDice()
         numRolls += 1
-        hand.showValues()
     }
     
-    func keep(die: DieChoices){
+    func keep(choices: [DieChoices]){
         for index in hand.dice.indices {
-            if die.rawValue == index {
-                hand.dice[index].kept = true
+            for choice in choices {
+                if choice.rawValue == index {
+                    hand.dice[index].kept = true
+                }
             }
         }
     }
