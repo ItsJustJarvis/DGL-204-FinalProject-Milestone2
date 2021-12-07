@@ -318,6 +318,32 @@ struct Scorecard {
             scorecard.showCard()
         }
     }
+}
+
+enum DieChoices: Int, CaseIterable {
+    case one = 0, two, three, four, five
+}
+
+struct Die: Comparable {
+    var value: Int
+    var kept: Bool
+    
+    init(){
+        self.value = 1
+        self.kept = false
+    }
+    
+    static func < (lhs: Die, rhs: Die) -> Bool {
+        return lhs.value < rhs.value
+    }
+    
+    mutating func roll() {
+        if(kept != true){
+            self.value = Int.random(in:1...6)
+        }
+    }
+}
+
     
     func totalScores() -> Int {
         var sum = 0
