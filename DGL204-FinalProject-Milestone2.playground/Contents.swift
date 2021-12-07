@@ -1,9 +1,6 @@
 import UIKit
 import Foundation
 
-// Game constants
-let MAX_ROLLS = 3;
-
 class Player {
     let name: String
     var score: Int
@@ -344,6 +341,7 @@ struct Scorecard {
 class Game {
     var players: [Player];
     var scoreboard: [String: Int] = [:]
+    let MAX_ROLLS_PER_TURN = 3;
     var numberOfPlayers: Int {
         get{
             players.count
