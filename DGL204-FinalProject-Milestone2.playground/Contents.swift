@@ -350,6 +350,7 @@ class Game {
     
     init(players: [Player]){
         self.players = players
+        currentPlayer = 0
         setScoreboard()
     }
     
@@ -384,20 +385,48 @@ class Game {
     }
 }
 
-// TEST CODE FUNCTIONALITY:
+// TESTING CODE FUNCTIONALITY WITH A COUPLE SCRIPTED ROUNDS:
 
-let player1 = Player(name: "Reeve"); // Add Name
-let yahtzee = Game(players: [player1])
+// I have placed some code below in a particular scripted order to replicate a game between two players, and allow you to enter values to see the code I have made functioning. This is in place of any real user interaction. I wanted to be able to show a gameplay loop, and did not quite understand how to do so for this project. I realize this isnt perfect, and has alot of room to improve but I have put a lot of effort into producing something to hand in rather than nothing. I have had an increasingly hard week with personal concerns and have lost focus for this semester.
 
-yahtzee.playerTurn(for: player1)
+// Below is a representation of a couple turns between two players. To act-out the game, enter values according to the provided comments and continue code execution as you go.
 
-player1.keep(choices: [.two,.three,.four,.five]) // Multiple Choices Allowed. Choices Are: .one, .two, .three, .four, .five. Leave empty if you don't want to keep any.
+// A players turn consists of these steps:
+//
+//  1. Roll
+//  2. Select dice to keep
+//  3. Roll
+//  4. Select dice to keep
+//  5. Roll
+//  6. Track scores
 
-yahtzee.playerTurn(for: player1)
+
+
+let player1 = Player(name: "Reeve") // Add Name
+let player2 = Player(name: "Kayla") // Add Name
+
+let yahtzee = Game(players: [player1, player2]) // Instantiate game with players
+
+yahtzee.play()
 
 player1.keep(choices: []) // Multiple Choices Allowed. Choices Are: .one, .two, .three, .four, .five. Leave empty if you don't want to keep any.
 
-yahtzee.playerTurn(for: player1)
+yahtzee.play()
 
-player1.trackScores(for: .fullHouse) // Scorecard Items: .ones, .twos, .threes, .fours, .fives, .sixes, .threeOfKind, .fourOfKind, .fullHouse, .smStraight, .lgStraight, .yahtzee, .chance
+player1.keep(choices: []) // Multiple Choices Allowed. Choices Are: .one, .two, .three, .four, .five. Leave empty if you don't want to keep any.
 
+yahtzee.play()
+
+player1.trackScores(for: ) // Scorecard Item Choices: .ones, .twos, .threes, .fours, .fives, .sixes, .threeOfKind, .fourOfKind, .fullHouse, .smStraight, .lgStraight, .yahtzee, .chance
+
+yahtzee.play()
+
+player2.keep(choices: []) // Multiple Choices Allowed. Choices Are: .one, .two, .three, .four, .five. Leave empty if you don't want to keep any.
+
+yahtzee.play()
+
+player2.keep(choices: []) // Multiple Choices Allowed. Choices Are: .one, .two, .three, .four, .five. Leave empty if you don't want to keep any.
+
+yahtzee.play()
+
+player2.trackScores(for: ) // Scorecard Item Choices: .ones, .twos, .threes, .fours, .fives, .sixes, .threeOfKind, .fourOfKind, .fullHouse, .smStraight, .lgStraight, .yahtzee, .chance
