@@ -1,16 +1,14 @@
 import UIKit
 import Foundation
 /**
- 
- Author:      Reeve Jarvis
- Date:        12/06/2021
- Course:      DGL-204 - Swift
- Assignment:  Final Project
+ Author: Reeve Jarvis
+ Date: 12/06/2021
+ Course: DGL-204 - Swift
+ Assignment: Final Project
  
  Project Description:
  
  This project was planned as a general gameroom application meant to house three games. I have had to reduce it's overall complexity, due to time constraints and personal reasons getting in the way of my studies. I have created a codebase that includes the various pieces needed to play a game of yahtzee. This is not without errors, and is not entirely complete. It is a work in progress. With that said I was able to accomplish the basic functionality needed to play a few rounds, and track the players scores based on their hand of dice. I hope you can see some worth in what I have created, and I only wish I made more time and focus to give this project the attention it deserved.
- 
  **/
 
 
@@ -412,7 +410,7 @@ class Game {
     }
 }
 
-// TESTING CODE FUNCTIONALITY WITH A COUPLE SCRIPTED ROUNDS:
+// TESTING/EXERCISING CODE FUNCTIONALITY WITH A COUPLE SCRIPTED ROUNDS:
 
 // I have placed some code below in a particular scripted order to replicate a round between two players, and allow you to enter values to see the code I have made functioning (with some errors expected). This is in place of any real user interaction. I wanted to be able to show a gameplay loop, and did not quite understand how to do so for this project.
 
@@ -429,31 +427,31 @@ class Game {
 
 
 
-let player1 = Player(name: "Reeve") // Add Name
-let player2 = Player(name: "Kayla") // Add Name
+let player1 = Player(name: "Player1") // Add Name
+let player2 = Player(name: "Player2") // Add Name
 
-let yahtzee = Game(players: [player1, player2]) // Instantiate game with players
-
-yahtzee.play()
-
-player1.keep(choices: []) // Multiple Choices Allowed. Choices Are: .one, .two, .three, .four, .five. Leave empty if you don't want to keep any.
+let yahtzee = Game(players: [player1, player2])
 
 yahtzee.play()
 
-player1.keep(choices: []) // Multiple Choices Allowed. Choices Are: .one, .two, .three, .four, .five. Leave empty if you don't want to keep any.
+player1.keep(choices: [/* REPLACE WITH CHOICE(S) */]) // Multiple Choices Allowed. Choices Are: .one, .two, .three, .four, .five. Leave empty if you don't want to keep any.
 
 yahtzee.play()
 
-player1.trackScores(for: ) // Scorecard Item Choices: .ones, .twos, .threes, .fours, .fives, .sixes, .threeOfKind, .fourOfKind, .fullHouse, .smStraight, .lgStraight, .yahtzee, .chance
+player1.keep(choices: [/* REPLACE WITH CHOICE(S) */]) // Multiple Choices Allowed. Choices Are: .one, .two, .three, .four, .five. Leave empty if you don't want to keep any.
 
 yahtzee.play()
 
-player2.keep(choices: []) // Multiple Choices Allowed. Choices Are: .one, .two, .three, .four, .five. Leave empty if you don't want to keep any.
+player1.trackScores(for: /* REPLACE WITH CHOICE */) // Scorecard Item Choices: .ones, .twos, .threes, .fours, .fives, .sixes, .threeOfKind, .fourOfKind, .fullHouse, .smStraight, .lgStraight, .yahtzee, .chance
 
 yahtzee.play()
 
-player2.keep(choices: []) // Multiple Choices Allowed. Choices Are: .one, .two, .three, .four, .five. Leave empty if you don't want to keep any.
+player2.keep(choices: [/* REPLACE WITH CHOICE(S) */]) // Multiple Choices Allowed. Choices Are: .one, .two, .three, .four, .five. Leave empty if you don't want to keep any.
 
 yahtzee.play()
 
-player2.trackScores(for: ) // Scorecard Item Choices: .ones, .twos, .threes, .fours, .fives, .sixes, .threeOfKind, .fourOfKind, .fullHouse, .smStraight, .lgStraight, .yahtzee, .chance
+player2.keep(choices: [/* REPLACE WITH CHOICE(S) */]) // Multiple Choices Allowed. Choices Are: .one, .two, .three, .four, .five. Leave empty if you don't want to keep any.
+
+yahtzee.play()
+
+player2.trackScores(for: /* REPLACE WITH CHOICE */) // Scorecard Item Choices: .ones, .twos, .threes, .fours, .fives, .sixes, .threeOfKind, .fourOfKind, .fullHouse, .smStraight, .lgStraight, .yahtzee, .chance
